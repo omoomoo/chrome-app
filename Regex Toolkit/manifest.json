@@ -1,0 +1,14 @@
+{
+	"name": "Hello World",
+	"description": "My first package app.",
+	"version": "1.0",
+	"app" : {
+		"background": {
+			"scripts": ["background.js"]
+		}
+	},
+	"sandbox": {
+		"pages": ["window.html"]
+	},
+	"icons": {"16": "calculator-16.png", "123": "calculator-123"}
+}

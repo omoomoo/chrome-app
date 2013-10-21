@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  	<head></head>
+  	<style type="text/css">
+      @font-face {
+        font-family: 'Marmelad';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Marmelad'), local('Marmelad-Regular'), url(HM9p0JaHv5-HhbhN_csF8vesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+      }
+  		body {
+  			font-size: 18px;
+        font-family: 'Marmelad', sans-serif;
+  		}
+  		#up, #down {
+  			width: 100%;
+  		}
+  		#down {
+  			position: relative;
+        top: 0px;
+        left: 0px;
+  		}
+  		#test-text {
+        position: absolute;
+        top: 23px;
+        left: 0px;
+        z-index: 100;
+        background: rgba(0,0,0,0);
+  		}
+  		#test-text-render {
+        position: absolute;
+        top: 23px;
+        left: 0px;
+        z-index: 10;
+  			width: 100%;
+        height: 200px;
+        color: rgba(0,0,0,0);
+  		}
+  		textarea {
+  			width: 100%;
+  			height: 200px;
+        outline: none;
+        font-size: 16px;
+        font-family: 'Marmelad', sans-serif;
+        color: #333;
+  		}
+  		span {
+  			background: red;
+  			border-radius:3px;
+  		}
+  	</style>
+  	<script type="text/javascript">
+
+  	</script>
+  	<body>
+    	<div id="up">
+    		<label>regular expressions</label>
+    		<textarea id="regex-text"></textarea>
+    	</div>
+
+    	<div id="down" style="height: 400px;">
+    		<label>text</label>
+    		<textarea id="test-text"></textarea>
+    		<div id="test-text-render"></div>
+    	</div>
+
+    	<script type="text/javascript">
+    		var down = document.getElementById('down');
+    		down.addEventListener('click',function(){
+    			console.log('down click');
+    		});
+
+    		var regexText = document.getElementById('regex-text');
+
+    		regexText.addEventListener('keyup',function(e){
+    			console.log('up keydown');
+    			// 取得正则表达式
+    			var pattern = regexText.value;
+    			console.log('The regex input is : ' + pattern);
+
+    			if(pattern == '' || pattern == undefined) {
+    				//document.getElementById('test-text').value = text;
+    				document.getElementById('test-text-render').innerHTML = text;
+    				return;
+    			}
+
+    			// 进行正则处理
+    			pattern = new RegExp('(' + pattern + ')',"g");
+    			var result = '';
+    			
+    			console.log('pattern is : ' + pattern);
+
+    			result = text.replace(pattern, '<span>$1</span>')
+
+    			console.log('result is : ' + result);
+
+    			// 重新写到#test-text
+    			//document.getElementById('test-text').value = result;
+    			document.getElementById('test-text-render').innerHTML = result;
+    		});
+
+    		var text = '';
+    		document.getElementById('test-text').addEventListener('keyup', function(){
+    			text = this.value;
+    			document.getElementById('test-text-render').innerHTML = this.value;
+    		});
+    	</script>
+  	</body>
+</html>
