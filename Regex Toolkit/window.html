@@ -114,7 +114,7 @@
     		regexText.addEventListener('keyup',function(e){
     			console.log('up keydown');
     			// 取得正则表达式
-    			var pattern = regexText.value;
+    			pattern = regexText.value;
     			console.log('The regex input is : ' + pattern);
 
     			if(pattern == '' || pattern == undefined) {
@@ -123,13 +123,7 @@
     				return;
     			}
 
-    			// 进行正则处理
-    			pattern = new RegExp('(' + pattern + ')',"g");
-    			var result = '';
-    			
-    			console.log('pattern is : ' + pattern);
-
-    			result = text.replace(pattern, '<span>$1</span>')
+    			result = renderTextByRegex(text, pattern);
 
     			console.log('result is : ' + result);
 
@@ -141,11 +135,26 @@
     		var text = '';
     		document.getElementById('test-text').addEventListener('keyup', function(){
     			text = this.value;
-    			document.getElementById('test-text-render').innerHTML = this.value;
+
+          result = renderTextByRegex(text, pattern);
+
+    			document.getElementById('test-text-render').innerHTML = result;
     		});
 
+
+
+
+        //////////////////////////////////////////
         function renderTextByRegex(text, pattern) {
+          // 进行正则处理
+          _pattern = new RegExp('(' + pattern + ')',"g");
+          var result = '';
           
+          console.log('pattern is : ' + _pattern);
+
+          result = text.replace(_pattern, '<span>$1</span>');
+
+          return result;
         }
     	</script>
   	</body>
