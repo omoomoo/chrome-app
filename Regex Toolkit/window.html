@@ -8,6 +8,10 @@
         font-weight: 400;
         src: local('Marmelad'), local('Marmelad-Regular'), url(HM9p0JaHv5-HhbhN_csF8vesZW2xOQ-xsNqO47m55DA.woff) format('woff');
       }
+      html {
+        border-left: solid 1px #999;
+        border-right: solid 1px #999;
+      }
   		body {
   			font-size: 18px;
         font-family: 'Marmelad', sans-serif;
@@ -32,22 +36,39 @@
         top: 23px;
         left: 0px;
         z-index: 10;
+        margin: 0px;
+        padding: 1px;
   			width: 100%;
         height: 200px;
+        font-size: 16px;
+        font-family: 'Marmelad', sans-serif;
         color: rgba(0,0,0,0);
   		}
   		textarea {
+        margin: 0px;
+        padding: 0px;
   			width: 100%;
   			height: 200px;
         outline: none;
         font-size: 16px;
         font-family: 'Marmelad', sans-serif;
         color: #333;
+        border: solid 1px #999;
   		}
   		span {
-  			background: red;
-  			border-radius:3px;
+        margin: 0px;
+        padding: 0px;
+        border: none;
+        border-radius: 2px;
+        font-size: 16px;
+        font-family: 'Marmelad', sans-serif;
   		}
+      span:nth-child(odd) {
+        background: #88f;
+      }
+      span:nth-child(even) {
+        background: #f88;
+      }
   	</style>
   	<script type="text/javascript">
 
@@ -61,7 +82,7 @@
     	<div id="down" style="height: 400px;">
     		<label>text</label>
     		<textarea id="test-text"></textarea>
-    		<div id="test-text-render"></div>
+    		<pre id="test-text-render"></pre>
     	</div>
 
     	<script type="text/javascript">
