@@ -4,11 +4,15 @@
 	"version": "1.0",
 	"app" : {
 		"background": {
-			"scripts": ["background.js"]
+			"scripts": ["background.js","menus.js"]
 		}
 	},
 	"sandbox": {
 		"pages": ["window.html"]
 	},
-	"icons": {"16": "calculator-16.png", "123": "calculator-123"}
+	"icons": {"48": "calculator-48.png", "123": "calculator-123"},
+	"offline_enabled": true,
+	"permissions": [
+    	"contextMenus"
+  	]
 }

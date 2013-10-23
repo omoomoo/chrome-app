@@ -12,6 +12,7 @@
         src: local('Marmelad'), local('Marmelad-Regular'), url(HM9p0JaHv5-HhbhN_csF8vesZW2xOQ-xsNqO47m55DA.woff) format('woff');
       }
       html {
+        background-color: #f0f0f0;
         border-left: solid 1px #999;
         border-right: solid 1px #999;
       }
@@ -83,7 +84,7 @@
     		<textarea id="regex-text"></textarea>
     	</div>
 
-    	<div id="down" style="height: 400px;">
+    	<div id="down" style="height: 325px;">
         <div>
           <label>text</label>
           <label style="font-size:13px;">
@@ -104,6 +105,8 @@
     	</div>
 
     	<script type="text/javascript">
+
+
     		var down = document.getElementById('down');
     		// down.addEventListener('click',function(){
     		// 	console.log('down click');
@@ -133,7 +136,7 @@
     		});
 
     		var text = '';
-    		document.getElementById('test-text').addEventListener('keyup', function(){
+    		document.getElementById('test-text').addEventListener('keyup', function(e){
     			text = this.value;
 
           result = renderTextByRegex(text, pattern);

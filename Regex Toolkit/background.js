@@ -7,8 +7,17 @@ chrome.app.runtime.onLaunched.addListener(function() {
 	chrome.app.window.create('window.html', {
   		"bounds": {
   			width: 650,
-    		height: 500
+    		height: 520
   		}
   	});
+});
+
+chrome.runtime.onInstalled.addListener(function() {
+        // When the app gets installed, set up the context menus
+    chrome.contextMenus.create({
+        title: CONTEXT_MENU_CONTENTS.forLauncher[0],
+        id: 'launcher1',
+        contexts: ['launcher']
+    });
 });
       
