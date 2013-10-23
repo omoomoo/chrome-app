@@ -13,8 +13,6 @@
       }
       html {
         background-color: #f0f0f0;
-        border-left: solid 1px #999;
-        border-right: solid 1px #999;
       }
   		body {
         padding: 2px;
@@ -44,7 +42,7 @@
         margin: 0px;
         padding: 1px;
   			width: 100%;
-        height: 200px;
+        height: 300px;
         font-size: 16px;
         font-family: 'Marmelad', sans-serif, '微软雅黑';
         color: rgba(0,0,0,0);
@@ -80,24 +78,24 @@
   	</style>
   	<body>
     	<div id="up">
-    		<label>regular expressions</label>
+    		<label>Regular Expressions</label>
     		<textarea id="regex-text"></textarea>
     	</div>
 
     	<div id="down" style="height: 325px;">
         <div>
-          <label>text</label>
+          <label>Text</label>
           <label style="font-size:13px;">
-            <input type="checkbox"/>
-            不区分大小写
+            <input type="checkbox" value="g" class="pattern_attr"/>
+            全局匹配
           </label>
           <label style="font-size:13px;">
-            <input type="checkbox"/>
-            不区分大小写
+            <input type="checkbox" value="i" class="pattern_attr"/>
+            区分大小写
           </label>
           <label style="font-size:13px;">
-            <input type="checkbox"/>
-            不区分大小写
+            <input type="checkbox" value="m" class="pattern_attr"/>
+            多行匹配
           </label>
         </div>
     		<textarea id="test-text"></textarea>
@@ -105,6 +103,31 @@
     	</div>
 
     	<script type="text/javascript">
+        var p_a = document.getElementsByClassName('pattern_attr');
+        
+        for(var i=0; i < p_a.length; i++) {
+          p_a[i].addEventListener('click', function(e){
+            var attrs = '';
+            for(var j=0; j < p_a.length; j++) {
+              if(p_a[j].checked) {
+                attrs += p_a[j].value;
+              }
+            }
+            pattern = new regexText
+          }, false);
+        }
+
+        regexContext = {
+          text: '',
+          pattern_text: '',
+          pattern_attrs: '',
+          setRegExp: function(patternText, attributes){
+            this.pattern = new RegExp('(' + patternText + ')', attributes);
+          },
+          renderText: function(){
+            return this.text.replace(this.pattern, '<span>$1</span>');
+          } 
+        };
 
 
     		var down = document.getElementById('down');

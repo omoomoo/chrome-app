@@ -7,7 +7,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
 	chrome.app.window.create('window.html', {
   		"bounds": {
   			width: 650,
-    		height: 520
+    		height: 475
   		}
   	});
 });
