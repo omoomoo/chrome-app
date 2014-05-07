@@ -5,7 +5,7 @@
 		<title>Toolkit for Hacker</title>
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css">
-		<!--<link rel="stylesheet" href="fonts/font-awesome.min.css">-->
+		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/button.css">
 		<script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
 		<script src="js/bootstrap.min.js" type="text/javascript"></script>
@@ -47,31 +47,31 @@
   				<table>
 					<tr>
 						<td>
-							<h2>String<button class="button button-rounded button-action" style="float:right;">编码[encode]</button></h2>
-							<textarea></textarea>
+							<h2>Text<button class="button button-rounded button-action" id="plaintext-encode-trigger" style="float:right;">编码[encode]</button></h2>
+							<textarea id="plainText"></textarea>
 						</td>
 						<td>
 							<h2>Base64<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
-							<textarea></textarea>
+							<textarea id="base64Text"></textarea>
 						</td>
 						<td>
-							<h2>Hex[\uxxxx]<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
-							<textarea></textarea>
+							<h2>Base64 URL Safe<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
+							<textarea id="base64UrlSafeText"></textarea>
 						</td>
 					</tr>
 					<tr>
 					<tr>
 						<td>
+							<h2>URL<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
+							<textarea id="urlText"></textarea>
+						</td>
+						<td>
 							<h2>Binary<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
-							<textarea></textarea>
+							<textarea id="binaryText"></textarea>
 						</td>
 						<td>
-							<h2>DEC<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
-							<textarea ></textarea>
-						</td>
-						<td>
-							<h2>URL Encode<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
-							<textarea></textarea>
+							<h2>Hex<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
+							<textarea id="hexText"></textarea>
 						</td>
 					</tr>
 				</table>
@@ -80,6 +80,10 @@
   			<div class="tab-pane" id="regrex-tool">敬请期待...</div>
   			<div class="tab-pane" id="others-tool">敬请期待...</div>
 		</div>
+		<form id="encode-plaintext-form" method="POST" action="http://localhost:8080/hackit/encode/text">
+			<input type="hidden" name="encoding" id="encoding" value="UTF-8"/>
+			<input type="hidden" name="text" id="text" value=""/>
+		</form>
 	</body>
 	<script type="text/javascript" src="js/controller.js" ></script>
 </html>

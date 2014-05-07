@@ -13,6 +13,7 @@
 		"48": "calculator-48.png"
 	},
 	"permissions": [
+		"http://localhost:8080/*", /**  开发环境   **/
 		"http://cdn.bootcss.com/*",
 		"https://cokepluscarbon.github.com/*",
     	"contextMenus",
