@@ -1,0 +1,32 @@
+{
+	"name": "Hackit",
+	"description": "Tool for Hacker!",
+	"version": "1.0",
+	"author": "cokepluscarbon",
+	"update_url": "https://cokepluscarbon.github.com/chrome-app/update.xml",
+	"app": {
+		"background": {
+			"scripts": ["background.js"]
+		}
+	},
+	"icons": {
+		"48": "calculator-48.png"
+	},
+	"permissions": [
+		"http://cdn.bootcss.com/*",
+		"https://cokepluscarbon.github.com/*",
+    	"contextMenus",
+    	"serial",
+  		"storage",
+  		"videoCapture",
+  		"desktopCapture",
+  		"dns",
+  		"geolocation",
+  		"location",
+  		"nativeMessaging",
+  		"system.cpu",
+  		"system.memory",
+  		"tts",
+  		"webview"
+    ]
+}
