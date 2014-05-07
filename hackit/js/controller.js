@@ -1,3 +1,6 @@
+var FormatFilter = {}; // 格式过滤器
+var ValidateFilter = {}; // 验证过滤器
+
 $('.nav a').click(function(e) {
 	e.preventDefault()
 	$(this).tab('show')
