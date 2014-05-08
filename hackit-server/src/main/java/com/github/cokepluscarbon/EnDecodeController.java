@@ -41,7 +41,7 @@ public class EnDecodeController {
 		rs.put(TextType.BASE64_URL_SAFE, EnDecodeUtils.encodeBase64(bytes, true));
 		rs.put(TextType.BINARY, EnDecodeUtils.encodeBinary(bytes));
 		rs.put(TextType.HEX, EnDecodeUtils.encodeHex(bytes));
-		rs.put(TextType.URL, EnDecodeUtils.encodeUrl(text, encoding));
+		rs.put(TextType.URL, EnDecodeUtils.encodeUrl(bytes, encoding));
 
 		return rs;
 	}
@@ -49,7 +49,7 @@ public class EnDecodeController {
 	@ResponseBody
 	@RequestMapping(value = "/decode", params = "textType", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Object decode(String text, String textType, String encoding, HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response) throws UnsupportedEncodingException {
 
 		if (!checkEncoding(encoding)) {
 			String message = String.format("不支持的编码格式：%s", encoding);
@@ -79,19 +79,19 @@ public class EnDecodeController {
 		}
 
 		Map<String, String> rs = new HashMap<String, String>();
-		rs.put(TextType.PLAIN, text);
+		rs.put(TextType.PLAIN, new String(bytes, encoding));
 		rs.put(TextType.MD5, EnDecodeUtils.encodeMd5(bytes));
 		rs.put(TextType.BASE64, EnDecodeUtils.encodeBase64(bytes, false));
 		rs.put(TextType.BASE64_URL_SAFE, EnDecodeUtils.encodeBase64(bytes, true));
 		rs.put(TextType.BINARY, EnDecodeUtils.encodeBinary(bytes));
 		rs.put(TextType.HEX, EnDecodeUtils.encodeHex(bytes));
-		rs.put(TextType.URL, EnDecodeUtils.encodeUrl(text, encoding));
+		rs.put(TextType.URL, EnDecodeUtils.encodeUrl(bytes, encoding));
 
 		return rs;
 	}
 
 	public boolean checkEncoding(String encoding) {
-		return encoding.matches("GBK|GB2312|UTF-7|UTF-8|UTF-16|UTF-32");
+		return encoding.matches("GBK|GB2312|UTF-8|UTF-16|UTF-32");
 	}
 
 }

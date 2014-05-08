@@ -31,9 +31,17 @@ public class EnDecodeUtils {
 		return Hex.encodeHexString(bytes);
 	}
 
-	public static String encodeUrl(String src, String encoding) {
+	public static String encodeUrl(byte[] bytes, String encoding) {
 		try {
-			return URLEncoder.encode(src, encoding);
+			return URLEncoder.encode(encodePlain(bytes, encoding), encoding);
+		} catch (UnsupportedEncodingException e) {
+			return String.format("encoding:%s not spoort!", encoding);
+		}
+	}
+
+	public static String encodePlain(byte[] bytes, String encoding) {
+		try {
+			return new String(bytes, encoding);
 		} catch (UnsupportedEncodingException e) {
 			return String.format("encoding:%s not spoort!", encoding);
 		}
