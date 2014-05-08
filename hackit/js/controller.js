@@ -32,7 +32,7 @@ $('#plaintext-encode-trigger').click(function(e) {
  * 常用编解码之下拉菜单
  */
 $('#encode-decode-tool-menu .dropdown-menu a').click(function(e) {
-	var _encoding = $(this).context.innerText;
+	window._encoding = $(this).context.innerText;
 	$('#choosed-encoding').text(_encoding);
 })
 /**
