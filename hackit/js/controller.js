@@ -6,13 +6,6 @@ $('.nav a').click(function(e) {
 	$(this).tab('show')
 })
 
-$.post('http://localhost:8080/hackit/encode/md5', {
-	text : 'this is test text!这是测试文档！',
-	encoding : 'UTF-8'
-}, function(data) {
-	console.log(data);
-}, 'json')
-
 $('#plaintext-encode-trigger').click(function(e) {
 	var text = $('#plainText').val();
 
@@ -24,10 +17,10 @@ $('#plaintext-encode-trigger').click(function(e) {
 	var params = $form.serialize();
 
 	$.post(url, params, function(data) {
-		$('#hexText').val(data.hexText);
-		$('#binaryText').val(data.binaryText);
-		$('#urlText').val(data.urlText);
-		$('#base64Text').val(data.base64Text);
-		$('#base64UrlSafeText').val(data.base64UrlSafeText);
+		$('#hexText').val(data.hex);
+		$('#binaryText').val(data.binary);
+		$('#urlText').val(data.url);
+		$('#base64Text').val(data.base64);
+		$('#base64UrlSafeText').val(data.base64UrlSafe);
 	}, 'json');
 })
