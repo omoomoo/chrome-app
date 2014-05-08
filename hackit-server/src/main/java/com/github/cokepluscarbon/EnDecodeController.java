@@ -32,7 +32,7 @@ public class EnDecodeController {
 			return message;
 		}
 
-		byte[] bytes = new String(text.getBytes(), encoding).getBytes();
+		byte[] bytes = new String(text.getBytes(), response.getCharacterEncoding()).getBytes(encoding);
 
 		Map<Object, Object> rs = new HashMap<Object, Object>();
 		rs.put(TextType.PLAIN, text);
@@ -79,7 +79,7 @@ public class EnDecodeController {
 		}
 
 		Map<String, String> rs = new HashMap<String, String>();
-		rs.put(TextType.PLAIN, new String(bytes, encoding));
+		rs.put(TextType.PLAIN, new String(new String(bytes, encoding).getBytes(), "UTF-8"));
 		rs.put(TextType.MD5, EnDecodeUtils.encodeMd5(bytes));
 		rs.put(TextType.BASE64, EnDecodeUtils.encodeBase64(bytes, false));
 		rs.put(TextType.BASE64_URL_SAFE, EnDecodeUtils.encodeBase64(bytes, true));

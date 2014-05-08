@@ -33,7 +33,7 @@ public class EnDecodeUtils {
 
 	public static String encodeUrl(byte[] bytes, String encoding) {
 		try {
-			return URLEncoder.encode(encodePlain(bytes, encoding), encoding);
+			return URLEncoder.encode(new String(bytes, encoding), encoding);
 		} catch (UnsupportedEncodingException e) {
 			return String.format("encoding:%s not spoort!", encoding);
 		}
@@ -47,8 +47,8 @@ public class EnDecodeUtils {
 		}
 	}
 
-	public static String decodeUrl(String src, String encoding) throws UnsupportedEncodingException {
-		return URLDecoder.decode(src, encoding);
+	public static byte[] decodeUrl(String text, String encoding) throws UnsupportedEncodingException {
+		return new String(URLDecoder.decode(text, encoding).getBytes(), encoding).getBytes();
 	}
 
 	public static byte[] decodeBinary(String text) {
@@ -63,10 +63,9 @@ public class EnDecodeUtils {
 		return Base64.decodeBase64(text);
 	}
 
-	public static byte[] getBytes(String src, String textType, String encoding) throws UnsupportedEncodingException,
+	public static byte[] getBytes(String text, String textType, String encoding) throws UnsupportedEncodingException,
 			DecoderException {
 		byte[] bytes = null;
-		String text = new String(src.getBytes(), encoding);
 
 		switch (textType) {
 		case TextType.BASE64:
@@ -82,10 +81,7 @@ public class EnDecodeUtils {
 			bytes = EnDecodeUtils.decodeHex(text);
 			break;
 		case TextType.URL:
-			bytes = EnDecodeUtils.decodeUrl(src, encoding).getBytes();
-			break;
-		case TextType.PLAIN:
-			bytes = text.getBytes();
+			bytes = EnDecodeUtils.decodeUrl(text, encoding);
 			break;
 		default:
 			break;
