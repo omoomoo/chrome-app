@@ -45,33 +45,43 @@
 		</ul>
 		<div class="tab-content">
   			<div class="tab-pane active" id="encode-decode-tool">
+  				<div id="encode-decode-tool-menu" class="btn-group" style="margin: 15px 0px -10px 10px;">
+        			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">文本编码：<span id="choosed-encoding">UTF-8</span>&nbsp;&nbsp;<span class="caret"></span></button>
+        			<ul class="dropdown-menu" role="menu">
+          				<li><a href="#">UTF-8</a></li>
+          				<li><a href="#">UTF-16</a></li>
+          				<li><a href="#">UTF-32</a></li>
+          				<li><a href="#">GBK</a></li>
+          				<li><a href="#">GB2312</a></li>
+        			</ul>
+      			</div>	
   				<table>
 					<tr>
 						<td>
-							<h2>Text<button class="button button-rounded button-action" id="plaintext-encode-trigger" style="float:right;">编码[encode]</button></h2>
+							<h2>Text<button class="button button-rounded button-action decode-trigger" id="plaintext-encode-trigger" data-textType="plain" style="float:right;">编码[encode]</button></h2>
 							<textarea id="plainText"></textarea>
 						</td>
 						<td>
-							<h2>Base64<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
+							<h2>Base64<button class="button button-rounded button-primary decode-trigger" data-textType="base64" style="float:right;">解码[decode]</button></h2>
 							<textarea id="base64Text"></textarea>
 						</td>
 						<td>
-							<h2>Base64 URL Safe<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
+							<h2>Base64 URL Safe<button class="button button-rounded button-primary decode-trigger" data-textType="base64UrlSafe" style="float:right;">解码[decode]</button></h2>
 							<textarea id="base64UrlSafeText"></textarea>
 						</td>
 					</tr>
 					<tr>
 					<tr>
 						<td>
-							<h2>URL<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
+							<h2>URL<button class="button button-rounded button-primary decode-trigger" data-textType="url" style="float:right;">解码[decode]</button></h2>
 							<textarea id="urlText"></textarea>
 						</td>
 						<td>
-							<h2>Binary<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
+							<h2>Binary<button class="button button-rounded button-primary decode-trigger" data-textType="binary" style="float:right;">解码[decode]</button></h2>
 							<textarea id="binaryText"></textarea>
 						</td>
 						<td>
-							<h2>Hex<button class="button button-rounded button-primary" style="float:right;">解码[decode]</button></h2>
+							<h2>Hex<button class="button button-rounded button-primary decode-trigger" data-textType="hex" style="float:right;">解码[decode]</button></h2>
 							<textarea id="hexText"></textarea>
 						</td>
 					</tr>
@@ -82,8 +92,8 @@
   			<div class="tab-pane" id="others-tool">敬请期待...</div>
 		</div>
 		<form id="encode-plaintext-form" method="POST" action="http://localhost:8080/hackit/encode">
-			<input type="hidden" name="encoding" id="encoding" value="UTF-8"/>
-			<input type="hidden" name="text" id="text" value=""/>
+			<input type="hidden" name="encoding" value="GBK"/>
+			<input type="hidden" name="text" value=""/>
 		</form>
 	</body>
 	<script type="text/javascript" src="js/controller.js" ></script>
