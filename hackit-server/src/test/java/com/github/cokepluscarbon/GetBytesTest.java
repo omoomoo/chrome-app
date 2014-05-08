@@ -4,6 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import org.apache.commons.codec.binary.BinaryCodec;
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.lang3.text.translate.JavaUnicodeEscaper;
+import org.apache.commons.lang3.text.translate.UnicodeEscaper;
 import org.junit.Test;
 
 public class GetBytesTest {
@@ -38,4 +41,13 @@ public class GetBytesTest {
 
 		System.out.println(BinaryCodec.toAsciiString(src.getBytes()));
 	}
+
+	@Test
+	public void t3_htmlEntity() throws UnsupportedEncodingException {
+		System.out.println(StringEscapeUtils.escapeHtml4("曾<tiger>"));
+		System.out.println(StringEscapeUtils.unescapeHtml4("&#x6A;&#x61;&#x76;&#x61;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x3A;&#x61;&#x6C;&#x65;&#x72;&#x74;&#x28;&#x27;&#x78;&#x73;&#x73;&#x27;&#x29;&#x3B;"));
+		
+	}
+	
+	
 }
