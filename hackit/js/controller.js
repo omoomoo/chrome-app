@@ -22,7 +22,7 @@ $('.encode-trigger').click(function(e) {
 	var textType = $(this).attr('data-textType');
 	var text = $('#' + textType + 'Text').val();
 
-	var url = 'http://localhost:8080/hackit/encode';
+	var url = ' http://infootav1.softwinners.com/hackit/encode';
 	var params = {
 		text : text,
 		encoding : _encoding
@@ -44,7 +44,7 @@ $('.decode-trigger').click(function(e) {
 	var textType = $(this).attr('data-textType');
 	var text = $('#' + textType + 'Text').val();
 
-	var url = 'http://localhost:8080/hackit/decode';
+	var url = ' http://infootav1.softwinners.com/hackit/decode';
 	var params = {
 		text : text,
 		textType : textType,

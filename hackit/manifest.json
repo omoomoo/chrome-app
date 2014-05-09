@@ -15,6 +15,7 @@
 	"permissions": [
 		"http://localhost:8080/*", /**  开发环境   **/
 		"http://cdn.bootcss.com/*",
+		"http://infootav1.softwinners.com/hackit/*",
 		"https://cokepluscarbon.github.com/*",
     	"contextMenus",
     	"serial",

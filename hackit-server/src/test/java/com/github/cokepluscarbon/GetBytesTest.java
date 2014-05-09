@@ -45,9 +45,16 @@ public class GetBytesTest {
 	@Test
 	public void t3_htmlEntity() throws UnsupportedEncodingException {
 		System.out.println(StringEscapeUtils.escapeHtml4("曾<tiger>"));
-		System.out.println(StringEscapeUtils.unescapeHtml4("&#x6A;&#x61;&#x76;&#x61;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x3A;&#x61;&#x6C;&#x65;&#x72;&#x74;&#x28;&#x27;&#x78;&#x73;&#x73;&#x27;&#x29;&#x3B;"));
+		System.out
+				.println(StringEscapeUtils
+						.unescapeHtml4("&#x6A;&#x61;&#x76;&#x61;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x3A;&#x61;&#x6C;&#x65;&#x72;&#x74;&#x28;&#x27;&#x78;&#x73;&#x73;&#x27;&#x29;&#x3B;"));
+
+		String filename = "中文字体";
+		String encoding = "GBK";
+
+		System.out.println(17 % 10 == 0 ? 17 / 10 : 17 % 10 + 1);
 		
+		int i = 0;
+		i == null?1:2;
 	}
-	
-	
 }
