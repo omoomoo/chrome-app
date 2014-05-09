@@ -55,6 +55,5 @@ public class GetBytesTest {
 		System.out.println(17 % 10 == 0 ? 17 / 10 : 17 % 10 + 1);
 		
 		int i = 0;
-		i == null?1:2;
 	}
 }
