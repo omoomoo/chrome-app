@@ -17,18 +17,6 @@
 		"http://cdn.bootcss.com/*",
 		"http://infootav1.softwinners.com/hackit/*",
 		"https://cokepluscarbon.github.com/*",
-    	"contextMenus",
-    	"serial",
-  		"storage",
-  		"videoCapture",
-  		"desktopCapture",
-  		"dns",
-  		"geolocation",
-  		"location",
-  		"nativeMessaging",
-  		"system.cpu",
-  		"system.memory",
-  		"tts",
-  		"webview"
+    	"contextMenus"
     ]
 }
