@@ -60,3 +60,11 @@ $('.decode-trigger').click(function(e) {
 		$('#base64UrlSafeText').val(data.base64UrlSafe);
 	}, 'json');
 })
+/**
+ * 全局ajax错误
+ * 
+ */
+$(document).ajaxError(function(event, jqxhr, settings, exception){
+  $('.encode-decode-tool-error-dialog').show();
+  $('.encode-decode-tool-error-dialog').find('span').text(exception);
+});
