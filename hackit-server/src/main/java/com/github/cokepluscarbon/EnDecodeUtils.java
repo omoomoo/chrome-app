@@ -48,7 +48,7 @@ public class EnDecodeUtils {
 	}
 
 	public static byte[] decodeUrl(String text, String encoding) throws UnsupportedEncodingException {
-		return new String(URLDecoder.decode(text, encoding).getBytes(), encoding).getBytes();
+		return URLDecoder.decode(text, encoding).getBytes(encoding);
 	}
 
 	public static byte[] decodeBinary(String text) {

@@ -1,59 +1,108 @@
 package com.github.cokepluscarbon;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 
+import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.BinaryCodec;
-import org.apache.commons.lang3.StringEscapeUtils;
-import org.apache.commons.lang3.text.translate.JavaUnicodeEscaper;
-import org.apache.commons.lang3.text.translate.UnicodeEscaper;
+import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
 
 public class GetBytesTest {
+	@Test
+	public void t4() {
+		String s = "曾";
+		System.out.println(toHexString(s.getBytes()));
+		System.out.println(Hex.encodeHexString(s.getBytes()));
+	}
+
+	public static String toHexString(byte[] data) {
+		final int l = data.length;
+		final char[] out = new char[l << 1];
+
+		for (int i = 0, j = 0; i < l; i++) {
+			out[j++] = DIGITS_LOWER[(0xF0 & data[i]) >>> 4];
+			out[j++] = DIGITS_LOWER[(0x0F & data[i])];
+		}
+
+		return new String(out);
+	}
+
+	final static char[] DIGITS_LOWER = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
 	@Test
-	public void t1() throws UnsupportedEncodingException {
-		String src = "中国China";
+	public void t5() {
+		System.out.println(Byte.MIN_VALUE);
+		System.out.println(Byte.MAX_VALUE);
 
-		System.out.println(BinaryCodec.toAsciiString(src.getBytes()));
-		System.out.println(BinaryCodec.toAsciiString(src.getBytes("GBK")));
-		System.out.println(BinaryCodec.toAsciiString(src.getBytes("GB2312")));
-
-		System.out.println();
-
-		System.out.println(new String(src.getBytes()));
-		System.out.println(new String(src.getBytes("GBK"), "GBK"));
-		System.out.println(new String(src.getBytes("GB2312"), "GB2312"));
+		System.out.println(BinaryCodec.toAsciiString(new byte[] { Byte.MIN_VALUE }));
+		System.out.println(BinaryCodec.toAsciiString(new byte[] { Byte.MAX_VALUE }));
 	}
 
 	@Test
-	public void t2() throws UnsupportedEncodingException {
-		String src = "中国China";
+	public void t6() {
+		byte i = (byte) 0b10000000;
+		byte j = (byte) 0b11111111;
+		byte m = (byte) 0b00000000;
+		byte n = (byte) 0b01111111;
 
-		System.out.println(URLEncoder.encode(src, "UTF-8"));
-		System.out.println(URLEncoder.encode(src, "GBK"));
-		System.out.println(URLEncoder.encode(src, "GB2312"));
+		System.out.println(i);
+		System.out.println(j);
+		System.out.println(m);
+		System.out.println(n);
 	}
 
 	@Test
-	public void t3() throws UnsupportedEncodingException {
-		String src = "a";
+	public void t7() {
+		short i = (short) 0b1000000000000000;
+		short j = (short) 0b1111111111111111;
+		short m = (short) 0b0000000000000000;
+		short n = (short) 0b0111111111111111;
 
-		System.out.println(BinaryCodec.toAsciiString(src.getBytes()));
+		System.out.println(i);
+		System.out.println(j);
+		System.out.println(m);
+		System.out.println(n);
 	}
 
 	@Test
-	public void t3_htmlEntity() throws UnsupportedEncodingException {
-		System.out.println(StringEscapeUtils.escapeHtml4("曾<tiger>"));
-		System.out
-				.println(StringEscapeUtils
-						.unescapeHtml4("&#x6A;&#x61;&#x76;&#x61;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x3A;&#x61;&#x6C;&#x65;&#x72;&#x74;&#x28;&#x27;&#x78;&#x73;&#x73;&#x27;&#x29;&#x3B;"));
+	public void t8() {
+		int i = (int) 0b10000000000000000000000000000000;
+		int j = (int) 0b11111111111111111111111111111111;
+		int m = (int) 0b00000000000000000000000000000000;
+		int n = (int) 0b01111111111111111111111111111111;
 
-		String filename = "中文字体";
-		String encoding = "GBK";
+		System.out.println(i); // -2147483648
+		System.out.println(j); // -1
+		System.out.println(m); // 0
+		System.out.println(n); // 2147483647
+	}
 
-		System.out.println(17 % 10 == 0 ? 17 / 10 : 17 % 10 + 1);
-		
-		int i = 0;
+	@Test
+	public void t9() {
+		long i = (long) 0b1000000000000000000000000000000000000000000000000000000000000000L;
+		long j = (long) 0b1111111111111111111111111111111111111111111111111111111111111111L;
+		long m = (long) 0b0000000000000000000000000000000000000000000000000000000000000000L;
+		long n = (long) 0b0111111111111111111111111111111111111111111111111111111111111111L;
+
+		System.out.println(i); // -9223372036854775808
+		System.out.println(j); // -1
+		System.out.println(m); // 0
+		System.out.println(n); // 9223372036854775807
+	}
+
+	@Test
+	public void t10() throws UnsupportedEncodingException {
+
+		char c = (char) 0b0100111000100101;
+		System.out.println(c);
+		System.out.println((short) c);
+
+		System.out.println((char) 20005); // 严
+	}
+
+	@Test
+	public void t11() throws UnsupportedEncodingException, DecoderException {
+		char c = '中';
+		System.out.println(BinaryCodec.toAsciiChars(Hex.decodeHex(new char[] { c, c })));
 	}
 }

@@ -4,6 +4,16 @@ var ValidateFilter = {};
 // 验证过滤器
 var _encoding = 'UTF-8';
 
+//var url = {
+//	encode : 'http://infootav1.softwinners.com/hackit/encode',
+//	decode : 'http://infootav1.softwinners.com/hackit/decode'
+//}
+
+var url = {
+	encode : 'http://localhost:8080/hackit/encode',
+	decode : 'http://localhost:8080/hackit/decode'
+}
+
 $('.nav a').click(function(e) {
 	e.preventDefault()
 	$(this).tab('show')
@@ -22,13 +32,12 @@ $('.encode-trigger').click(function(e) {
 	var textType = $(this).attr('data-textType');
 	var text = $('#' + textType + 'Text').val();
 
-	var url = ' http://infootav1.softwinners.com/hackit/encode';
 	var params = {
 		text : text,
 		encoding : _encoding
 	}
 
-	$.post(url, params, function(data) {
+	$.post(url.encode, params, function(data) {
 		$('#plainText').val(data.plain);
 		$('#hexText').val(data.hex);
 		$('#binaryText').val(data.binary);
@@ -44,14 +53,13 @@ $('.decode-trigger').click(function(e) {
 	var textType = $(this).attr('data-textType');
 	var text = $('#' + textType + 'Text').val();
 
-	var url = ' http://infootav1.softwinners.com/hackit/decode';
 	var params = {
 		text : text,
 		textType : textType,
 		encoding : _encoding
 	}
 
-	$.post(url, params, function(data) {
+	$.post(url.decode, params, function(data) {
 		$('#plainText').val(data.plain);
 		$('#hexText').val(data.hex);
 		$('#binaryText').val(data.binary);
@@ -62,9 +70,9 @@ $('.decode-trigger').click(function(e) {
 })
 /**
  * 全局ajax错误
- * 
+ *
  */
-$(document).ajaxError(function(event, jqxhr, settings, exception){
-  $('.encode-decode-tool-error-dialog').show();
-  $('.encode-decode-tool-error-dialog').find('span').text(exception);
+$(document).ajaxError(function(event, jqxhr, settings, exception) {
+	$('.encode-decode-tool-error-dialog').show();
+	$('.encode-decode-tool-error-dialog').find('span').text(exception);
 });

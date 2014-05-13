@@ -15,6 +15,7 @@
 	"permissions": [
 		"http://infootav1.softwinners.com/hackit/*",
 		"https://cokepluscarbon.github.com/*",
+		"http://localhost:8080/*", /* 测试环境  */
     	"contextMenus"
     ]
 }
