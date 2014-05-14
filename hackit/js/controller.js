@@ -4,15 +4,15 @@ var ValidateFilter = {};
 // 验证过滤器
 var _encoding = 'UTF-8';
 
-//var url = {
-//	encode : 'http://infootav1.softwinners.com/hackit/encode',
-//	decode : 'http://infootav1.softwinners.com/hackit/decode'
-//}
-
 var url = {
-	encode : 'http://localhost:8080/hackit/encode',
-	decode : 'http://localhost:8080/hackit/decode'
+	encode : 'http://infootav1.softwinners.com/hackit/encode',
+	decode : 'http://infootav1.softwinners.com/hackit/decode'
 }
+
+//var url = {
+//	encode : 'http://localhost:8080/hackit/encode',
+//	decode : 'http://localhost:8080/hackit/decode'
+//}
 
 $('.nav a').click(function(e) {
 	e.preventDefault()
