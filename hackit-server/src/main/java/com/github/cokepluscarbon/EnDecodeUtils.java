@@ -26,6 +26,7 @@ public class EnDecodeUtils {
 
 	public static String encodeBinary(byte[] bytes) {
 		byte[] copyBytes = bytes.clone();
+		ArrayUtils.reverse(copyBytes);
 
 		return BinaryCodec.toAsciiString(copyBytes);
 	}
