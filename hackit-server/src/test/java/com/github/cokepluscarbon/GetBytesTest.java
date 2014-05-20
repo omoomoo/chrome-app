@@ -107,8 +107,7 @@ public class GetBytesTest {
 
 	@Test
 	public void t11() throws UnsupportedEncodingException, DecoderException {
-		char c = '中';
-		System.out.println(BinaryCodec.toAsciiChars(Hex.decodeHex(new char[] { c, c })));
+
 	}
 
 	@Test

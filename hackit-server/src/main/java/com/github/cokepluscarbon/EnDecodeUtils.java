@@ -63,10 +63,10 @@ public class EnDecodeUtils {
 	}
 
 	public static byte[] decodeBinary(String text) {
-		byte[] dest = BinaryCodec.fromAscii(text.toCharArray());
-		ArrayUtils.reverse(dest);
+		char[] chars = text.toCharArray();
+		ArrayUtils.reverse(chars);
 
-		return dest;
+		return BinaryCodec.fromAscii(chars);
 	}
 
 	public static byte[] decodeHex(String text) throws DecoderException {
