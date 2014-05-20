@@ -25,17 +25,9 @@ public class EnDecodeUtils {
 	}
 
 	public static String encodeBinary(byte[] bytes) {
-		byte[] dest = BinaryCodec.toAsciiBytes(bytes);
-		ArrayUtils.reverse(dest);
+		byte[] copyBytes = bytes.clone();
 
-		String result = null;
-		try {
-			result = new String(dest, "ASCII");
-		} catch (UnsupportedEncodingException e) {
-			result = "UnsupportedEncodingException: " + e.getMessage();
-		}
-
-		return result;
+		return BinaryCodec.toAsciiString(copyBytes);
 	}
 
 	public static String encodeHex(byte[] bytes) {
@@ -63,10 +55,10 @@ public class EnDecodeUtils {
 	}
 
 	public static byte[] decodeBinary(String text) {
-		char[] chars = text.toCharArray();
-		ArrayUtils.reverse(chars);
+		byte[] dest = BinaryCodec.fromAscii(text.toCharArray());
+		ArrayUtils.reverse(dest);
 
-		return BinaryCodec.fromAscii(chars);
+		return dest;
 	}
 
 	public static byte[] decodeHex(String text) throws DecoderException {
