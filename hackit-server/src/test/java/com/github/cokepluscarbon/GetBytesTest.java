@@ -1,11 +1,16 @@
 package com.github.cokepluscarbon;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.BinaryCodec;
 import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
+import org.springframework.util.CollectionUtils;
 
 public class GetBytesTest {
 	@Test
@@ -104,5 +109,14 @@ public class GetBytesTest {
 	public void t11() throws UnsupportedEncodingException, DecoderException {
 		char c = '中';
 		System.out.println(BinaryCodec.toAsciiChars(Hex.decodeHex(new char[] { c, c })));
+	}
+
+	@Test
+	public void t12_toAsciiString() throws UnsupportedEncodingException {
+		byte[] data = new byte[] { (byte) 0xe0, 0x0f };
+		byte[] dest = BinaryCodec.toAsciiBytes(data);
+		ArrayUtils.reverse(dest);
+
+		System.out.println(new String(dest, "ASCII"));
 	}
 }

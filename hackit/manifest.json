@@ -1,21 +1,20 @@
 {
-	"name": "Hackit",
-	"description": "Tool for Hacker!",
+	"name": "NewBie",
+	"description": "encode and decode text, url, base64, binary, hex and so on.",
 	"version": "1.0",
 	"author": "cokepluscarbon",
-	"update_url": "https://cokepluscarbon.github.com/chrome-app/update.xml",
 	"app": {
 		"background": {
 			"scripts": ["background.js"]
 		}
 	},
 	"icons": {
-		"48": "calculator-48.png"
+		"48": "icon-48.png"
 	},
 	"permissions": [
 		"http://infootav1.softwinners.com/hackit/*",
 		"https://cokepluscarbon.github.com/*",
-		"http://localhost:8080/*", /* 测试环境  */
+		"http://localhost:8080/*",
     	"contextMenus"
     ]
 }

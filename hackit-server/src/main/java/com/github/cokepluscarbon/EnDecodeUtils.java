@@ -8,6 +8,7 @@ import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.BinaryCodec;
 import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.util.DigestUtils;
 
 public class EnDecodeUtils {
@@ -24,7 +25,17 @@ public class EnDecodeUtils {
 	}
 
 	public static String encodeBinary(byte[] bytes) {
-		return BinaryCodec.toAsciiString(bytes);
+		byte[] dest = BinaryCodec.toAsciiBytes(bytes);
+		ArrayUtils.reverse(dest);
+
+		String result = null;
+		try {
+			result = new String(dest, "ASCII");
+		} catch (UnsupportedEncodingException e) {
+			result = "UnsupportedEncodingException: " + e.getMessage();
+		}
+
+		return result;
 	}
 
 	public static String encodeHex(byte[] bytes) {
@@ -52,7 +63,10 @@ public class EnDecodeUtils {
 	}
 
 	public static byte[] decodeBinary(String text) {
-		return BinaryCodec.fromAscii(text.toCharArray());
+		byte[] dest = BinaryCodec.fromAscii(text.toCharArray());
+		ArrayUtils.reverse(dest);
+
+		return dest;
 	}
 
 	public static byte[] decodeHex(String text) throws DecoderException {
