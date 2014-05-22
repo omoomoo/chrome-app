@@ -107,7 +107,16 @@ public class GetBytesTest {
 
 	@Test
 	public void t11() throws UnsupportedEncodingException, DecoderException {
+		Class c = Object.class;
+		Class z = String.class;
+		Class x = Test.class;
+		Class v = BinaryCodec.class;
 
+		Object o = null;
+		o.getClass();
+
+		Test test = null;
+		test.getClass();
 	}
 
 	@Test
@@ -117,5 +126,11 @@ public class GetBytesTest {
 		ArrayUtils.reverse(dest);
 
 		System.out.println(new String(dest, "ASCII"));
+	}
+
+	@Test
+	public void t13_voidClass() {
+		System.out.println(void.class);
+		System.out.println(long.class);
 	}
 }
