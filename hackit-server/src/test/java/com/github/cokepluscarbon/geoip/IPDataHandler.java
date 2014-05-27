@@ -33,6 +33,8 @@ import org.apache.commons.lang.StringUtils;
 public class IPDataHandler {
 	public static void main(String[] args) {
 		System.out.println(IPDataHandler.findGeography("221.4.213.1").split("\t").length);
+		System.out.println(IPDataHandler.fileLength);
+		System.out.println(IPDataHandler.dataLength);
 	}
 
 	private static String IP_DATA_PATH = "C://17monipdb.dat";
