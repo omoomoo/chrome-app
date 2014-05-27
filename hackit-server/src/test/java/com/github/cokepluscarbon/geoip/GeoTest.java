@@ -14,17 +14,17 @@ public class GeoTest {
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
+				ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
 
-				for (int i = 10; i < 50; i++) {
-					IPResolver task = new IPResolver(locationQueue);
-					task.setIp("221.4." + i +".213");
-					task.setEntityId("132" + i);
+				while (true) {
+					for (int i = 0; i < 200; i++) {
+						IPResolver task = new IPResolver(locationQueue);
+						task.setIp("221." + i + ".1.213");
+						task.setEntityId("132" + i);
 
-					fixedThreadPool.execute(task);
+						fixedThreadPool.execute(task);
+					}
 				}
-
-				fixedThreadPool.shutdown();
 			}
 		}).start();
 
@@ -32,7 +32,7 @@ public class GeoTest {
 		while (true) {
 			Location location = locationQueue.take();
 
-			System.out.println(String.format("%10d%10s%20s%10s%10s%10s", count++, location.getId(), location.getIp(),
+			System.out.println(String.format("%15d%15s%15s%15s%15s%15s", count++, location.getId(), location.getIp(),
 					location.getCountry(), location.getCity(), location.getIsp()));
 		}
 	}
