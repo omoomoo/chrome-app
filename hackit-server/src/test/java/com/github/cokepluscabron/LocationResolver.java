@@ -8,15 +8,7 @@ import java.net.URLEncoder;
 
 import com.google.gson.Gson;
 
-public class GeoIPTest {
-	public static void main(String[] args) throws IOException {
-		LocationResp locationResp = resolveLocationResp("221.4.213.94");
-
-		if (locationResp != null && locationResp.getCode() == 0) {
-			Location location = locationResp.getLocation();
-			System.out.println(location.getIsp());
-		}
-	}
+public class LocationResolver {
 
 	public static LocationResp resolveLocationResp(String ip) throws IOException {
 		URL url = new URL(String.format("http://ip.taobao.com/service/getIpInfo.php?%s=%s",
