@@ -1,7 +1,8 @@
 package com.github.cokepluscarbon.geoip;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 
@@ -10,14 +11,22 @@ public class GeoTest {
 	public void t1() throws InterruptedException {
 		LinkedBlockingQueue<Location> locationQueue = new LinkedBlockingQueue<Location>(10);
 
-		for (int i = 0; i < 255; i++) {
-			IPResolver task = new IPResolver(locationQueue);
-			task.setIp("221.4.213." + i);
-			task.setEntityId("132" + i);
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
 
-			Thread thread = new Thread(task);
-			thread.start();
-		}
+				for (int i = 10; i < 50; i++) {
+					IPResolver task = new IPResolver(locationQueue);
+					task.setIp("221.4." + i +".213");
+					task.setEntityId("132" + i);
+
+					fixedThreadPool.execute(task);
+				}
+
+				fixedThreadPool.shutdown();
+			}
+		}).start();
 
 		int count = 0;
 		while (true) {
