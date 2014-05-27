@@ -15,6 +15,8 @@ public class LocationResolver {
 				URLEncoder.encode(ip, "UTF-8")));
 
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		conn.setConnectTimeout(1000);
+		conn.setReadTimeout(5000);
 
 		if (conn.getResponseCode() == 200) {
 			conn.getInputStream();
@@ -22,6 +24,8 @@ public class LocationResolver {
 					LocationResp.class);
 
 			return locationResp;
+		} else {
+			System.out.println(conn.getResponseCode());
 		}
 
 		return null;
