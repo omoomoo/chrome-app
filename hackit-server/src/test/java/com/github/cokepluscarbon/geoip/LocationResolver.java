@@ -1,4 +1,4 @@
-package com.github.cokepluscabron;
+package com.github.cokepluscarbon.geoip;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,8 +11,8 @@ import com.google.gson.Gson;
 public class LocationResolver {
 
 	public static LocationResp resolveLocationResp(String ip) throws IOException {
-		URL url = new URL(String.format("http://ip.taobao.com/service/getIpInfo.php?%s=%s",
-				URLEncoder.encode(ip, "UTF-8"), URLEncoder.encode(ip, "UTF-8")));
+		URL url = new URL(String.format("http://ip.taobao.com/service/getIpInfo.php?ip=%s",
+				URLEncoder.encode(ip, "UTF-8")));
 
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 

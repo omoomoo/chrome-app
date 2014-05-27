@@ -1,4 +1,4 @@
-package com.github.cokepluscabron;
+package com.github.cokepluscarbon.geoip;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,4 +1,4 @@
-package com.github.cokepluscabron;
+package com.github.cokepluscarbon.geoip;
 
 import java.io.IOException;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -16,14 +16,19 @@ public class IPResolver implements Runnable {
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		if (locationResp != null && locationResp.getCode() == 0) {
-			Location location = locationResp.getLocation();
-			location.setId(entityId);
+		if (locationResp != null) {
+			if (locationResp.getCode() == 0) {
 
-			try {
-				locationQueue.put(location);
-			} catch (InterruptedException e) {
-				System.out.println(e.getMessage());
+				Location location = locationResp.getLocation();
+				location.setId(entityId);
+
+				try {
+					locationQueue.put(location);
+				} catch (InterruptedException e) {
+					System.out.println(e.getMessage());
+				}
+			} else {
+				System.out.println(locationResp.getCode());
 			}
 		}
 	}
