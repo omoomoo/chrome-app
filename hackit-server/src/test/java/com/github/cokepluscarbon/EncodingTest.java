@@ -7,9 +7,13 @@ import org.junit.Test;
 public class EncodingTest {
 	@Test
 	public void t() throws UnsupportedEncodingException {
-		// Big5
-		// GB18030
-		// ASCII
-		String str = new String(new byte[] {}, "BIG5");
+		try {
+			System.out.println("try");
+			return;
+		} catch (Exception e) {
+
+		} finally {
+			System.out.println("finally");
+		}
 	}
 }
