@@ -93,7 +93,7 @@ public class EnDecodeController {
 	}
 
 	public boolean checkEncoding(String encoding) {
-		return encoding.matches("GBK|GB2312|UTF-8|UTF-16|UTF-32");
+		return encoding.matches("GBK|GB2312|GB18030|UTF-8|UTF-16|UTF-32|BIG5|ASCII");
 	}
 
 }
