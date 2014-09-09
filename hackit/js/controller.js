@@ -5,14 +5,22 @@ var ValidateFilter = {};
 var _encoding = 'UTF-8';
 
 var url = {
-	encode : 'http://infootav1.softwinners.com/hackit/encode',
-	decode : 'http://infootav1.softwinners.com/hackit/decode'
+	encode : 'http://121.40.152.11/hackit/encode',
+	decode : 'http://121.40.152.11/hackit/decode'
 }
 
 //var url = {
 //	encode : 'http://localhost:8080/hackit/encode',
 //	decode : 'http://localhost:8080/hackit/decode'
 //}
+
+/**
+ * i18n
+ */
+$('.encode-trigger').html(chrome.i18n.getMessage("encode"));
+$('.decode-trigger').html(chrome.i18n.getMessage("decode"));
+
+
 
 $('.nav a').click(function(e) {
 	e.preventDefault()

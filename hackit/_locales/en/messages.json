@@ -1,0 +1,8 @@
+{
+	"encode": {
+		"message": "Encode"
+	},
+	"decode": {
+		"message": "Decode"
+	}
+}

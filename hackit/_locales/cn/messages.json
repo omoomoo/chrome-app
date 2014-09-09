@@ -1,0 +1,8 @@
+{
+	"encode": {
+		"message": "编码[Encode]"
+	},
+	"decode": {
+		"message": "解码[Decode]"
+	}
+}
